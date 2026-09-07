@@ -1,11 +1,51 @@
-﻿/* ===== Fonts ===== */
+﻿/* ===== Color palette ===== */
+:root {
+    --color-primary: #b5203a;
+    --color-primary-dark: #8a1729;
+    --color-bg-alt: #faf7f5;
+    --color-dark: #1a1a1a;
+}
+
+/* ===== Fonts ===== */
 body {
     font-family: 'Inter', sans-serif;
+    background-color: #fff;
 }
 
 h1, h2, h3, h4, h5,
 .navbar-brand {
     font-family: 'Poppins', sans-serif;
+}
+
+/* ===== Override Bootstrap's red with our brand color ===== */
+.btn-danger {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+    .btn-danger:hover {
+        background-color: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
+    }
+
+.text-danger {
+    color: var(--color-primary) !important;
+}
+
+.border-danger {
+    border-color: var(--color-primary) !important;
+}
+
+.bg-light {
+    background-color: var(--color-bg-alt) !important;
+}
+
+/* ===== Navbar with blur ===== */
+.navbar-blur {
+    background-color: rgba(26, 26, 26, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--color-primary);
 }
 
 /* ===== Card hover effect ===== */
@@ -16,11 +56,11 @@ h1, h2, h3, h4, h5,
     .card-hover:hover {
         transform: translateY(-10px) scale(1.03);
         box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
-        border-color: #dc3545;
+        border-color: var(--color-primary);
     }
 
         .card-hover:hover .card-title {
-            color: #dc3545;
+            color: var(--color-primary);
             transition: color 0.3s ease;
         }
 
@@ -31,7 +71,7 @@ h1, h2, h3, h4, h5,
     width: 100%;
 }
 
-/* ===== Album cover placeholders (only used where a real image isn't set yet) ===== */
+/* ===== Album cover placeholders ===== */
 .album-cover {
     height: 160px;
     display: flex;
@@ -45,7 +85,7 @@ h1, h2, h3, h4, h5,
 }
 
 .cover-red {
-    background-color: #dc3545;
+    background-color: var(--color-primary);
 }
 
 .cover-dark {
@@ -56,26 +96,43 @@ h1, h2, h3, h4, h5,
     background-color: #6c757d;
 }
 
-/* ===== Home page hero ===== */
+/* ===== Hero sections ===== */
 .hero-gradient {
     background: linear-gradient(135deg, #1a1a1a 0%, #2c0a0d 60%, #4a1015 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-glow {
     border-radius: 50px;
     padding: 12px 32px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 4px 14px rgba(220, 53, 69, 0.4);
+    box-shadow: 0 4px 14px rgba(181, 32, 58, 0.4);
 }
 
     .btn-glow:hover {
         transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(220, 53, 69, 0.6);
+        box-shadow: 0 8px 24px rgba(181, 32, 58, 0.6);
+    }
+
+/* ===== Wave divider ===== */
+.wave-divider {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+    .wave-divider svg {
+        width: 100%;
+        height: 80px;
+        display: block;
     }
 
 /* ===== Stat cards ===== */
 .stat-card {
-    background: #f8f9fa;
+    background: var(--color-bg-alt);
     border-radius: 16px;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
 }
@@ -83,4 +140,43 @@ h1, h2, h3, h4, h5,
     .stat-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+/* ===== Icon circles ===== */
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(181, 32, 58, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 1.6rem;
+    color: var(--color-primary);
+}
+
+/* ===== Timeline (About page) ===== */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 3px solid var(--color-bg-alt);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -38px;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        border: 3px solid #fff;
+        box-shadow: 0 0 0 2px var(--color-primary);
     }
